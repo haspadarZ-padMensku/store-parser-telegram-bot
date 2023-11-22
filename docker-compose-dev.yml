@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  store-parser-telegram-bot:
+    image: node:18-alpine
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - ./server:/app
+      - ./server/node_modules:/app/node_modules
+    command: /bin/sh -c "npm i && npm run start:dev"
+    container_name: api
+    working_dir: /app
+    env_file: .env
