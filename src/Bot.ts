@@ -36,7 +36,7 @@ export const start = async () => {
     handleTextMessage(bot, botInfo, msg);
   });
 
-  schedule.scheduleJob('*/10 * * * *', () => checkShop(bot));
+  schedule.scheduleJob('*/9 * * * *', () => checkShop(bot));
 };
 
 export default bot;

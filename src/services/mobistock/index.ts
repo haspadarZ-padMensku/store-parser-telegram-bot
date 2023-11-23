@@ -8,6 +8,7 @@ interface Product {
   description: string;
   price: string;
   url: string;
+  date?: string;
 }
 
 const BASE_URL = 'https://mobistock.by';
@@ -43,6 +44,7 @@ export const getProducts = async () => {
       description,
       price,
       url,
+      date: new Date().toISOString(),
     };
   });
 
@@ -62,7 +64,7 @@ export const getNewProducts = async () => {
     }
 
     if (newProducts.length) {
-      const productsToSave = products ? [...products, ...newProducts] : [];
+      const productsToSave = products ? [...oldProducts, ...newProducts] : [];
       await saveFile(JSON.stringify(productsToSave), 'products.txt');
       logWithTime('File was updated!');
     }
