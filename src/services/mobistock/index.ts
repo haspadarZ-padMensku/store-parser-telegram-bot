@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { parse } from 'node-html-parser';
-import { getFile, saveFile } from '../../utils';
+import { getFile, logWithTime, saveFile } from '../../utils';
 
 interface Product {
   imageUrl: string;
@@ -60,6 +60,12 @@ export const getNewProducts = async () => {
     if (Array.isArray(oldProducts)) {
       newProducts = products?.filter((item) => !oldProducts.find((oldItem) => oldItem.name === item.name)) || [];
     }
+
+    if (newProducts.length) {
+      const productsToSave = products ? [...products, ...newProducts] : [];
+      await saveFile(JSON.stringify(productsToSave), 'products.txt');
+      logWithTime('File was updated!');
+    }
   } else {
     await saveFile(JSON.stringify(products), 'products.txt');
     newProducts = products;
@@ -67,6 +73,3 @@ export const getNewProducts = async () => {
 
   return newProducts;
 };
-
-// TODO: open page and parse products
-// get new items (save in temp LocalStorage)
