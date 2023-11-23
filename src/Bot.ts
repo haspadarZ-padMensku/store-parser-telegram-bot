@@ -36,7 +36,7 @@ export const start = async () => {
     handleTextMessage(bot, botInfo, msg);
   });
 
-  schedule.scheduleJob('*/30 * * * *', () => checkShop(bot)); // TODO: change to every 20 minutes
+  schedule.scheduleJob('*/10 * * * *', () => checkShop(bot));
 };
 
 export default bot;
