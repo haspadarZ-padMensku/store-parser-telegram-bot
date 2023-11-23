@@ -1,6 +1,6 @@
 import TelegramBot from 'node-telegram-bot-api';
 import * as MobistockService from '../services/mobistock';
-import { getFile } from '../utils';
+import { getFile, logWithTime } from '../utils';
 
 const checkShop = async (bot: TelegramBot) => {
   const newProducts = await MobistockService.getNewProducts();
@@ -30,6 +30,8 @@ const checkShop = async (bot: TelegramBot) => {
       }
     }
   }
+
+  logWithTime('Updates were checked!');
 };
 
 export default checkShop;
