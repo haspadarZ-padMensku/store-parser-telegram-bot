@@ -1,9 +1,8 @@
 import TelegramBot from 'node-telegram-bot-api';
-import { isGroup, logWithTime } from '../utils';
+import { isGroup } from '../utils';
 import handlePrivateCommands from './handlePrivateCommands';
 
 const handleTextMessage = async (bot: TelegramBot, botInfo: TelegramBot.User, msg: TelegramBot.Message) => {
-  logWithTime('handleMessage', msg);
   const chatId = msg.chat.id;
 
   if (!msg.text) {
