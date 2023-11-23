@@ -11,9 +11,9 @@ const checkShop = async (bot: TelegramBot) => {
 
     for await (const chatId of subscriptions) {
       for await (const product of newProducts) {
-        const caption = `${product.name}\n\n${product.description}\n\n${product.price}\n\n<em>обновлено ${new Date(
+        const caption = `${product.name}\n\n${product.description}\n\n${product.price}\n\n*Обновлено ${new Date(
           product.date ?? '11/23/2023',
-        ).toLocaleString()}</em>`;
+        ).toLocaleString()}*`;
 
         bot.sendPhoto(chatId, product.imageUrl, {
           caption,
