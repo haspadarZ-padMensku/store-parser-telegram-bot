@@ -37,6 +37,7 @@ export const start = async () => {
   });
 
   schedule.scheduleJob('*/9 * * * *', () => checkShop(bot));
+  checkShop(bot);
 };
 
 export default bot;

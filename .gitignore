@@ -2,5 +2,5 @@
 /build
 .DS_Store
 .env
-subscriptions.txt
-products.txt
+# subscriptions.txt
+# products.txt
